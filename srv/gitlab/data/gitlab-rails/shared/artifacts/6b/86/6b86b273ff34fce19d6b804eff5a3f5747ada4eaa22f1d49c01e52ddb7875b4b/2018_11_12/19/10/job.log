@@ -1,0 +1,675 @@
+[0KRunning with gitlab-runner 11.4.2 (cf91d5e1)
+[0;m[0K  on 96f2ea11c260 33932264
+[0;m[0KUsing Docker executor with image docker ...
+[0;m[0KPulling docker image docker ...
+[0;m[0KUsing docker image sha256:062267097b77e3ecf374b437e93fefe2bbb2897da989f930e4750752ddfc822a for docker ...
+[0;msection_start:1542041571:prepare_script[0KRunning on runner-33932264-project-1-concurrent-0 via 96f2ea11c260...
+section_end:1542041573:prepare_script[0Ksection_start:1542041573:get_sources[0K[32;1mFetching changes...[0;m
+HEAD is now at 0a2194b added dgoss tests for backend
+From http://gitlab/root/my-awesome-web-app
+   0a2194b..cc9a8d1  master     -> origin/master
+[32;1mChecking out cc9a8d12 as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+section_end:1542041581:get_sources[0Ksection_start:1542041581:restore_cache[0Ksection_end:1542041583:restore_cache[0Ksection_start:1542041583:download_artifacts[0Ksection_end:1542041586:download_artifacts[0Ksection_start:1542041586:build_script[0K[32;1m$ cd frontend[0;m
+[32;1m$ docker login -u $DOCKER_USER -p $DOCKER_PASS[0;m
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+[32;1m$ docker build --pull -t $CONTAINER_FRONTEND_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_FRONTEND_IMAGE:latest .[0;m
+Sending build context to Docker daemon  11.26kB
+Step 1/9 : FROM ubuntu:latest
+latest: Pulling from library/ubuntu
+Digest: sha256:29934af957c53004d7fb6340139880d23fb1952505a15d69a03af0d1418878cb
+Status: Image is up to date for ubuntu:latest
+ ---> ea4c82dcd15a
+Step 2/9 : RUN apt-get update -y
+ ---> Using cache
+ ---> 9a1fbdbf902d
+Step 3/9 : RUN apt-get install -y python-pip python-dev build-essential
+ ---> Using cache
+ ---> 9eb1cbea6bde
+Step 4/9 : COPY . /api
+ ---> 13ab30712157
+Step 5/9 : WORKDIR /api
+ ---> Running in 7af43fe30822
+Removing intermediate container 7af43fe30822
+ ---> 43751545305b
+Step 6/9 : RUN pip install -r requirements.txt
+ ---> Running in 92ee90b50de6
+Collecting Flask==0.10.1 (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/db/9c/149ba60c47d107f85fe52564133348458f093dd5e6b57a5b60ab9ac517bb/Flask-0.10.1.tar.gz (544kB)
+Collecting requests==2.9.1 (from -r requirements.txt (line 2))
+  Downloading https://files.pythonhosted.org/packages/b8/f7/3bb4d18c234a8ce7044d5ee2e1082b7d72bf6c550afb8d51ae266dea56f1/requests-2.9.1-py2.py3-none-any.whl (501kB)
+Collecting Jinja2>=2.4 (from Flask==0.10.1->-r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl (126kB)
+Collecting Werkzeug>=0.7 (from Flask==0.10.1->-r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/20/c4/12e3e56473e52375aa29c4764e70d1b8f3efa6682bef8d0aae04fe335243/Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+Collecting itsdangerous>=0.21 (from Flask==0.10.1->-r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/76/ae/44b03b253d6fade317f32c24d100b3b35c2239807046a4c953c7b89fa49e/itsdangerous-1.1.0-py2.py3-none-any.whl
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.4->Flask==0.10.1->-r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/bc/3a/6bfd7b4b202fa33bdda8e4e3d3acc719f381fd730f9a0e7c5f34e845bd4d/MarkupSafe-1.1.0-cp27-cp27mu-manylinux1_x86_64.whl
+Building wheels for collected packages: Flask
+  Running setup.py bdist_wheel for Flask: started
+  Running setup.py bdist_wheel for Flask: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/e1/f2/be/1c4f307a41aad7e632f79c0242a2714ecde24b663da3519665
+Successfully built Flask
+Installing collected packages: MarkupSafe, Jinja2, Werkzeug, itsdangerous, Flask, requests
+Successfully installed Flask-0.10.1 Jinja2-2.10 MarkupSafe-1.1.0 Werkzeug-0.14.1 itsdangerous-1.1.0 requests-2.9.1
+Removing intermediate container 92ee90b50de6
+ ---> 3ea9134d961f
+Step 7/9 : EXPOSE 8111
+ ---> Running in 043d615ae81f
+Removing intermediate container 043d615ae81f
+ ---> 54e039c32586
+Step 8/9 : ENTRYPOINT ["python"]
+ ---> Running in 57110f78ced0
+Removing intermediate container 57110f78ced0
+ ---> 8c0788fe104a
+Step 9/9 : CMD ["frontend.py"]
+ ---> Running in 1bbc8bb16d4b
+Removing intermediate container 1bbc8bb16d4b
+ ---> bc8d57be5cf7
+Successfully built bc8d57be5cf7
+Successfully tagged gcarvalho/frontend:cc9a8d1250decf3d663d44da53f01569b1818d72
+Successfully tagged gcarvalho/frontend:latest
+[32;1m$ docker push $CONTAINER_FRONTEND_IMAGE[0;m
+The push refers to repository [docker.io/gcarvalho/frontend]
+76ca6b9840d4: Preparing
+fe185bc2598d: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+76ca6b9840d4: Layer already exists
+cd7100a72410: Layer already exists
+fe185bc2598d: Layer already exists
+a088a3fb2849: Layer already exists
+0671fb6cb1691fb1b29c074d6a54ce66273cfa46: digest: sha256:b2a1bb793a6ee5e0d4db3f9a4c0f48dd14804d4bb012325f4decce8e2f3bac64 size: 1159
+e6448fc0436a: Preparing
+e9eb7b46354a: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+cd7100a72410: Layer already exists
+a088a3fb2849: Layer already exists
+e6448fc0436a: Layer already exists
+e9eb7b46354a: Layer already exists
+070e3ed376775c3100c956e51ad6fafbac11e220: digest: sha256:af5d76fe007bb65266aa7b3e82c840a78ea8434b891d20478c5af579172467cc size: 1158
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Waiting
+cd7100a72410: Waiting
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+92565a9a74ff: Layer already exists
+65991a212f34: Layer already exists
+12670f7d8b19f663deb2cb178741883c6f52a334: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+8678e8b8709c: Preparing
+fbb7c166ad11: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+ae1f631f14b7: Waiting
+76c033092e10: Waiting
+102645f1cf72: Waiting
+2146d867acf3: Waiting
+8678e8b8709c: Layer already exists
+f7183f8d6da6: Layer already exists
+76c033092e10: Layer already exists
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Layer already exists
+496257103876: Mounted from gcarvalho/backend
+fbb7c166ad11: Pushed
+255d5ae4939fc1ad5a40e33d67cea305d70d00fc: digest: sha256:b0ebc94b8014fde4efc0231b7fe82666406535bcd8174d6922fa41843c187dfe size: 1994
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+92565a9a74ff: Layer already exists
+a088a3fb2849: Layer already exists
+65991a212f34: Layer already exists
+cd7100a72410: Layer already exists
+2837f3733b4a916038a9840544745bb994a1d6b7: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+a0cd0dfbd1f2: Preparing
+f2c98f4354c9: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+f2c98f4354c9: Layer already exists
+a0cd0dfbd1f2: Layer already exists
+290616b7f613e3dcd7e3eb8a14378ca313e8ff06: digest: sha256:52dd4c35b91d2eb52b8b53f5533cbd96390c1ad248d284905c4f97d801d8c256 size: 1159
+7c47e5b21315: Preparing
+fe939dc9d4b6: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+7c47e5b21315: Layer already exists
+fe939dc9d4b6: Layer already exists
+33223f256be625f69c76a5452a109088df671788: digest: sha256:151994352f2af3a8cd722d0cb4e80014808fb7ef4b04483d823650a9e1026f95 size: 1159
+a884b79a7c51: Preparing
+87291c070521: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+87291c070521: Layer already exists
+a884b79a7c51: Layer already exists
+372300b7cfe6a4188cdcef4d1470bfca5f9ae8ce: digest: sha256:a724e0a36c6de3b228c5dd6a145ba8b485a09e4c03f684464899ca25fbf1e766 size: 1159
+1e2aa2d5a500: Preparing
+5cd3b321adc4: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+f7183f8d6da6: Layer already exists
+496257103876: Layer already exists
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+76c033092e10: Layer already exists
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Waiting
+102645f1cf72: Layer already exists
+5cd3b321adc4: Layer already exists
+1e2aa2d5a500: Layer already exists
+3d2b2d6d1f5d4b24834d8d732dc9cb34f2781162: digest: sha256:938e0f558ebb3e408704a91e8e8d9e83013444d8fe0dcfd5e12171bcbb2214d1 size: 1994
+616b0a501f12: Preparing
+cb1dc8eb8322: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+cb1dc8eb8322: Layer already exists
+616b0a501f12: Layer already exists
+430de3078b7680306edbac3352c9599a15b577de: digest: sha256:ce3683d5adb70ac1b651ea09ebcbcc6be1bdfc5c669c243f4d56a5ffb7b0de1a size: 1159
+1e2aa2d5a500: Preparing
+5cd3b321adc4: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+1e2aa2d5a500: Layer already exists
+102645f1cf72: Preparing
+2146d867acf3: Waiting
+ae1f631f14b7: Waiting
+102645f1cf72: Layer already exists
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+496257103876: Layer already exists
+5cd3b321adc4: Layer already exists
+76c033092e10: Layer already exists
+f7183f8d6da6: Layer already exists
+4d6a641c9c4898c813aa545fedda9f077077420b: digest: sha256:938e0f558ebb3e408704a91e8e8d9e83013444d8fe0dcfd5e12171bcbb2214d1 size: 1994
+a0cd0dfbd1f2: Preparing
+f2c98f4354c9: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a0cd0dfbd1f2: Layer already exists
+f2c98f4354c9: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+5c20a3fa5404ddc90d5894b6b65cce5b9acd6972: digest: sha256:52dd4c35b91d2eb52b8b53f5533cbd96390c1ad248d284905c4f97d801d8c256 size: 1159
+e57dca98b05e: Preparing
+de84a6409221: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+76c033092e10: Layer already exists
+2146d867acf3: Waiting
+ae1f631f14b7: Waiting
+102645f1cf72: Waiting
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Layer already exists
+f7183f8d6da6: Layer already exists
+496257103876: Layer already exists
+e57dca98b05e: Layer already exists
+de84a6409221: Layer already exists
+5e80dbec74539c041946ef01bd5c3339e0e8bc29: digest: sha256:71d169195d3a2f103a7b4b1c86cd9f27e1179a63bb4d2ce16760739e5e1226b5 size: 1994
+76ca6b9840d4: Preparing
+fe185bc2598d: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+76ca6b9840d4: Layer already exists
+a088a3fb2849: Layer already exists
+fe185bc2598d: Layer already exists
+cd7100a72410: Layer already exists
+5f4d5b0103528e4c0a79c92f6c6c939d7aa741e5: digest: sha256:b2a1bb793a6ee5e0d4db3f9a4c0f48dd14804d4bb012325f4decce8e2f3bac64 size: 1159
+104403983d31: Preparing
+327149df7294: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+327149df7294: Layer already exists
+104403983d31: Layer already exists
+6034add2f2b452f711450fd723dc8b01e1fbf9f4: digest: sha256:455f175e2eda0c44517c0a97c904d33dda2d65099578c3f406e8d96311f706df size: 1159
+a884b79a7c51: Preparing
+87291c070521: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+a884b79a7c51: Layer already exists
+cd7100a72410: Layer already exists
+87291c070521: Layer already exists
+618df43095a54d2bf546d5dc284f3e93b3c23766: digest: sha256:a724e0a36c6de3b228c5dd6a145ba8b485a09e4c03f684464899ca25fbf1e766 size: 1159
+616b0a501f12: Preparing
+cb1dc8eb8322: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+616b0a501f12: Layer already exists
+cb1dc8eb8322: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+637d3f37034f528e674dec8af7df5b4f459f083e: digest: sha256:ce3683d5adb70ac1b651ea09ebcbcc6be1bdfc5c669c243f4d56a5ffb7b0de1a size: 1159
+ac7a6d7e311d: Preparing
+ba45651d04ec: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+cd7100a72410: Layer already exists
+a088a3fb2849: Layer already exists
+ac7a6d7e311d: Layer already exists
+ba45651d04ec: Layer already exists
+6909211156df0336cd8512f0af9a06fd47efcd54: digest: sha256:898b7f0970571ae950cb99759a2e066b5f91808075291846e98ccba3d743b59e size: 1159
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+cd7100a72410: Layer already exists
+65991a212f34: Layer already exists
+a088a3fb2849: Layer already exists
+92565a9a74ff: Layer already exists
+6db6e34f6d95025b09cad5565c23c65e0613ad21: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+aa2e50fef1a5: Preparing
+09dd56150722: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+09dd56150722: Layer already exists
+aa2e50fef1a5: Layer already exists
+78739b601f6279db6c10911f363889736acc0619: digest: sha256:9bcc0bdf5340b5191db9b4627305821a74f046dba4789cc57b493acded3f7510 size: 1159
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+65991a212f34: Layer already exists
+92565a9a74ff: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+7ee5c983a9f35647d513cb690ccb5d8628cf4653: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+1a44fe1d9f98: Preparing
+2e053ae9b944: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+2e053ae9b944: Layer already exists
+1a44fe1d9f98: Layer already exists
+80a8026fe7e4b9608cc05adbacfd252bcc83851a: digest: sha256:dd47a3fb424cc5a6958717fa9bb281d9650fdfdd93c8074423e7ab5229b07bef size: 1159
+aa2e50fef1a5: Preparing
+09dd56150722: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+09dd56150722: Layer already exists
+cd7100a72410: Layer already exists
+a088a3fb2849: Layer already exists
+aa2e50fef1a5: Layer already exists
+9119a31de76e009f4d3e397450a2433c336ed592: digest: sha256:9bcc0bdf5340b5191db9b4627305821a74f046dba4789cc57b493acded3f7510 size: 1159
+76ca6b9840d4: Preparing
+fe185bc2598d: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+76ca6b9840d4: Layer already exists
+fe185bc2598d: Layer already exists
+cd7100a72410: Layer already exists
+94afd9694174077588c6f2c62da5c7e894596a73: digest: sha256:b2a1bb793a6ee5e0d4db3f9a4c0f48dd14804d4bb012325f4decce8e2f3bac64 size: 1159
+616b0a501f12: Preparing
+cb1dc8eb8322: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+cb1dc8eb8322: Layer already exists
+a088a3fb2849: Layer already exists
+616b0a501f12: Layer already exists
+cd7100a72410: Layer already exists
+9528604aefee47484fa24f50e1bd7df203241b0f: digest: sha256:ce3683d5adb70ac1b651ea09ebcbcc6be1bdfc5c669c243f4d56a5ffb7b0de1a size: 1159
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+65991a212f34: Layer already exists
+cd7100a72410: Layer already exists
+a088a3fb2849: Layer already exists
+92565a9a74ff: Layer already exists
+963db53f19ddcd064f4fcc0dc2a36269225ee4cb: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+aa36d47b7d72: Preparing
+71bc1c2137d5: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+76c033092e10: Layer already exists
+2146d867acf3: Waiting
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Waiting
+f7183f8d6da6: Layer already exists
+102645f1cf72: Layer already exists
+496257103876: Layer already exists
+aa36d47b7d72: Layer already exists
+71bc1c2137d5: Layer already exists
+98ba10a2b47bdc16c1d87ce1c8bf155964e28d08: digest: sha256:ff02857c638f2014e27c91b9bbb13be122dfef26c45977c63a07c88271efd210 size: 1994
+aa2e50fef1a5: Preparing
+09dd56150722: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+aa2e50fef1a5: Layer already exists
+09dd56150722: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+a0b7cceefabe0c986c7356b18dc3a6246e31b66c: digest: sha256:9bcc0bdf5340b5191db9b4627305821a74f046dba4789cc57b493acded3f7510 size: 1159
+76ca6b9840d4: Preparing
+fe185bc2598d: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+76ca6b9840d4: Layer already exists
+fe185bc2598d: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+b44e698b77ca116d5c535d9b28c04f301bb70128: digest: sha256:b2a1bb793a6ee5e0d4db3f9a4c0f48dd14804d4bb012325f4decce8e2f3bac64 size: 1159
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+92565a9a74ff: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+65991a212f34: Layer already exists
+bc0a440165a7a362efcfae8a2129e8e237116937: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+f10b9c364db4: Preparing
+e333a1910954: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+f7183f8d6da6: Layer already exists
+496257103876: Layer already exists
+76c033092e10: Layer already exists
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Layer already exists
+e333a1910954: Layer already exists
+f10b9c364db4: Layer already exists
+bd6ee5b0528e3bdd4bff9e0e47efe24b83bd546c: digest: sha256:0f0727af82f9e5576d5a4c9ca6190e0a835b042a231b605ff91c8d9e46181441 size: 1994
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+65991a212f34: Layer already exists
+92565a9a74ff: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+c1b3e47eae85f9d14dd4b3ffadb30ea5ab6413bb: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+68baeab8e1c2: Preparing
+f006e3d719b6: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+f006e3d719b6: Layer already exists
+68baeab8e1c2: Layer already exists
+c44b52633ff07932556fab45d99940693009414e: digest: sha256:189a3287824bfcf2a315bba7a34504319a400aaca826c616138d4bcf06430ec7 size: 1159
+aba925a3911a: Preparing
+2f8efddc04e3: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+76c033092e10: Layer already exists
+2146d867acf3: Waiting
+496257103876: Layer already exists
+f7183f8d6da6: Layer already exists
+102645f1cf72: Waiting
+ae1f631f14b7: Waiting
+102645f1cf72: Layer already exists
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+aba925a3911a: Layer already exists
+2f8efddc04e3: Layer already exists
+c8a154ddeef57aea0221f4a737ae68cd7c23ccc8: digest: sha256:446d3190aab490f988e130f1d2467751f56948f22d2cf8dd20ca8710b5d532af size: 1994
+aa2e50fef1a5: Preparing
+09dd56150722: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+aa2e50fef1a5: Layer already exists
+09dd56150722: Layer already exists
+cd7100a72410: Layer already exists
+c9490534be10b2cc4f261008028c53677c4419c6: digest: sha256:9bcc0bdf5340b5191db9b4627305821a74f046dba4789cc57b493acded3f7510 size: 1159
+a884b79a7c51: Preparing
+87291c070521: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+87291c070521: Layer already exists
+a884b79a7c51: Layer already exists
+cc3327ec55cd1aaf81473465faa774bc611bf9ae: digest: sha256:a724e0a36c6de3b228c5dd6a145ba8b485a09e4c03f684464899ca25fbf1e766 size: 1159
+7f75e1856926: Preparing
+4fcf1481109c: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+f7183f8d6da6: Layer already exists
+76c033092e10: Layer already exists
+496257103876: Layer already exists
+102645f1cf72: Preparing
+2146d867acf3: Waiting
+ae1f631f14b7: Waiting
+2146d867acf3: Layer already exists
+102645f1cf72: Layer already exists
+ae1f631f14b7: Layer already exists
+4fcf1481109c: Layer already exists
+7f75e1856926: Layer already exists
+cc3853650b261cb864dd6b4c2a716a48a4bfe591: digest: sha256:e187d507b97347e06e7fb5c384cda5b8d69664bdfa042a137f8e382c2933aaa7 size: 1994
+194125c31c49: Preparing
+906150c26125: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+76c033092e10: Layer already exists
+2146d867acf3: Waiting
+2146d867acf3: Layer already exists
+ae1f631f14b7: Waiting
+ae1f631f14b7: Layer already exists
+102645f1cf72: Waiting
+f7183f8d6da6: Layer already exists
+496257103876: Layer already exists
+102645f1cf72: Layer already exists
+906150c26125: Pushed
+194125c31c49: Pushed
+cc9a8d1250decf3d663d44da53f01569b1818d72: digest: sha256:77fb58e6e9fdbee2f9ff847b2222fda06f4010a28bd34b9528ef2a8e2c6a2d3f size: 1994
+a0cd0dfbd1f2: Preparing
+f2c98f4354c9: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+f2c98f4354c9: Layer already exists
+a0cd0dfbd1f2: Layer already exists
+d18cf20a3d195be54eef146e6e19d55c593eb722: digest: sha256:52dd4c35b91d2eb52b8b53f5533cbd96390c1ad248d284905c4f97d801d8c256 size: 1159
+77a3b0b03ef7: Preparing
+2308749650b1: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+f7183f8d6da6: Layer already exists
+496257103876: Layer already exists
+76c033092e10: Layer already exists
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Layer already exists
+77a3b0b03ef7: Layer already exists
+2308749650b1: Layer already exists
+d1ea5a1213aaa76b95cf149bb7eb85de3b47f252: digest: sha256:f798d1e5f50c814a32215e83c74fd619665eaa092a99a309cb019508e6e5ce35 size: 1994
+a884b79a7c51: Preparing
+87291c070521: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a884b79a7c51: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+87291c070521: Layer already exists
+e151595720edcd9c38accc44fd8d02a5b79a14b3: digest: sha256:a724e0a36c6de3b228c5dd6a145ba8b485a09e4c03f684464899ca25fbf1e766 size: 1159
+65991a212f34: Preparing
+92565a9a74ff: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+92565a9a74ff: Layer already exists
+cd7100a72410: Layer already exists
+65991a212f34: Layer already exists
+a088a3fb2849: Layer already exists
+e6818929e01e033f3c23c21939e2bf1cecca90d5: digest: sha256:d3f7f676038e37e948b2111f541d3499c4ebb8e0cb07afb0cf70e962d2b354ec size: 1159
+76ca6b9840d4: Preparing
+fe185bc2598d: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+76ca6b9840d4: Layer already exists
+cd7100a72410: Layer already exists
+a088a3fb2849: Layer already exists
+fe185bc2598d: Layer already exists
+e6e71665659d437cf1310f5f40ec153913872cf5: digest: sha256:b2a1bb793a6ee5e0d4db3f9a4c0f48dd14804d4bb012325f4decce8e2f3bac64 size: 1159
+0130194c7c57: Preparing
+a536e2ec2dbf: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+f7183f8d6da6: Layer already exists
+496257103876: Layer already exists
+76c033092e10: Layer already exists
+2146d867acf3: Waiting
+ae1f631f14b7: Waiting
+102645f1cf72: Waiting
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+102645f1cf72: Layer already exists
+a536e2ec2dbf: Layer already exists
+0130194c7c57: Layer already exists
+ec58577825d5cdca8acba6a23f7759da8625c515: digest: sha256:a27832bf1dfd11040f3bb1e8cc8aca882f45f203e1cab16333e1564dbabc0bf0 size: 1994
+4eff9dd7664a: Preparing
+823a60b4cdf3: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+76c033092e10: Layer already exists
+2146d867acf3: Waiting
+2146d867acf3: Layer already exists
+ae1f631f14b7: Layer already exists
+f7183f8d6da6: Layer already exists
+102645f1cf72: Layer already exists
+496257103876: Layer already exists
+823a60b4cdf3: Layer already exists
+4eff9dd7664a: Layer already exists
+ec7e4dd3a07e5952293e57d80c2e34278a434721: digest: sha256:af643a7eb3feacbc0ab2eb78f02827f464ddfd52d75ae79ad1a2a65475c01362 size: 1994
+f52ba27275cc: Preparing
+243bfcb50494: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+243bfcb50494: Layer already exists
+f52ba27275cc: Layer already exists
+f3a5c2e8be8fa86db9495b1982b7da85fac6faf3: digest: sha256:923f1c5d29cdd552bab1da880cc31ed818372586ceb1e804c464cd9115600dcd size: 1159
+e6448fc0436a: Preparing
+e9eb7b46354a: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+e6448fc0436a: Layer already exists
+e9eb7b46354a: Layer already exists
+cd7100a72410: Waiting
+cd7100a72410: Layer already exists
+a088a3fb2849: Layer already exists
+f41b322ecab10eb4d0adf20983f3aeba06d8d83d: digest: sha256:af5d76fe007bb65266aa7b3e82c840a78ea8434b891d20478c5af579172467cc size: 1158
+616b0a501f12: Preparing
+cb1dc8eb8322: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+616b0a501f12: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Waiting
+cb1dc8eb8322: Layer already exists
+cd7100a72410: Layer already exists
+fc0661ad241b5e4873db212f11d6ad18737849a7: digest: sha256:ce3683d5adb70ac1b651ea09ebcbcc6be1bdfc5c669c243f4d56a5ffb7b0de1a size: 1159
+9c1b739a6cc4: Preparing
+19b845cce760: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+19b845cce760: Layer already exists
+9c1b739a6cc4: Layer already exists
+fd579857496b70cbe337f3702ac34aa5fa690325: digest: sha256:6166933ded3e62e4bd3ec16a2e17203e40653137910c35fad1822f8e9fa40521 size: 1159
+aa2e50fef1a5: Preparing
+09dd56150722: Preparing
+a088a3fb2849: Preparing
+cd7100a72410: Preparing
+aa2e50fef1a5: Layer already exists
+09dd56150722: Layer already exists
+a088a3fb2849: Layer already exists
+cd7100a72410: Layer already exists
+lastest: digest: sha256:9bcc0bdf5340b5191db9b4627305821a74f046dba4789cc57b493acded3f7510 size: 1159
+194125c31c49: Preparing
+906150c26125: Preparing
+f7183f8d6da6: Preparing
+496257103876: Preparing
+76c033092e10: Preparing
+2146d867acf3: Preparing
+ae1f631f14b7: Preparing
+102645f1cf72: Preparing
+2146d867acf3: Waiting
+102645f1cf72: Waiting
+ae1f631f14b7: Waiting
+906150c26125: Layer already exists
+496257103876: Layer already exists
+76c033092e10: Layer already exists
+ae1f631f14b7: Layer already exists
+194125c31c49: Layer already exists
+2146d867acf3: Layer already exists
+102645f1cf72: Layer already exists
+f7183f8d6da6: Layer already exists
+latest: digest: sha256:77fb58e6e9fdbee2f9ff847b2222fda06f4010a28bd34b9528ef2a8e2c6a2d3f size: 1994
+section_end:1542041737:build_script[0Ksection_start:1542041737:after_script[0Ksection_end:1542041738:after_script[0Ksection_start:1542041738:archive_cache[0Ksection_end:1542041739:archive_cache[0Ksection_start:1542041739:upload_artifacts_on_success[0Ksection_end:1542041741:upload_artifacts_on_success[0K[32;1mJob succeeded
+[0;m

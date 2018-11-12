@@ -1,0 +1,15 @@
+[0KRunning with gitlab-runner 11.4.2 (cf91d5e1)
+[0;m[0K  on 96f2ea11c260 5b2339a2
+[0;m[0KUsing Docker executor with image ubuntu:latest ...
+[0;m[0KPulling docker image ubuntu:latest ...
+[0;m[0KUsing docker image sha256:ea4c82dcd15a33e3e9c4c37050def20476856a08e59526fbe533cc4e98387e39 for ubuntu:latest ...
+[0;msection_start:1542036949:prepare_script[0KRunning on runner-5b2339a2-project-1-concurrent-0 via 96f2ea11c260...
+section_end:1542036950:prepare_script[0Ksection_start:1542036950:get_sources[0K[32;1mCloning repository...[0;m
+Cloning into '/builds/root/my-awesome-web-app'...
+[32;1mChecking out 3d2b2d6d as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+section_end:1542036954:get_sources[0Ksection_start:1542036954:restore_cache[0Ksection_end:1542036956:restore_cache[0Ksection_start:1542036956:download_artifacts[0Ksection_end:1542036957:download_artifacts[0Ksection_start:1542036957:build_script[0K[32;1m$ cd frontend[0;m
+[32;1m$ docker login -u $DOCKER_USER -p $DOCKER_PASS[0;m
+/bin/bash: line 69: docker: command not found
+section_end:1542036959:build_script[0Ksection_start:1542036959:after_script[0Ksection_end:1542036960:after_script[0Ksection_start:1542036960:upload_artifacts_on_failure[0Ksection_end:1542036961:upload_artifacts_on_failure[0K[31;1mERROR: Job failed: exit code 1
+[0;m

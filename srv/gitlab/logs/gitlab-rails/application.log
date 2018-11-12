@@ -1,0 +1,4 @@
+# Logfile created on 2018-11-12 15:17:19 +0000 by logger.rb/56815
+November 12, 2018 15:17: User "Administrator" (admin@example.com) was created
+November 12, 2018 15:19: Successful Login: username=root ip=172.18.0.1 method=standard admin=true
+November 12, 2018 15:21: Administrator created a new project "Administrator / My Awesome Web App"

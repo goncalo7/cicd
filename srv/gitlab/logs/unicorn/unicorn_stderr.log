@@ -1,0 +1,29 @@
+I, [2018-11-12T15:17:40.276332 #1048]  INFO -- : Refreshing Gem list
+I, [2018-11-12T15:18:12.901161 #1048]  INFO -- : listening on addr=127.0.0.1:8080 fd=24
+I, [2018-11-12T15:18:12.904948 #1048]  INFO -- : listening on addr=/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket fd=25
+I, [2018-11-12T15:18:13.043826 #1303]  INFO -- : worker=0 ready
+I, [2018-11-12T15:18:13.071638 #1306]  INFO -- : worker=1 ready
+I, [2018-11-12T15:18:13.083818 #1309]  INFO -- : worker=2 ready
+I, [2018-11-12T15:18:13.099519 #1048]  INFO -- : master process ready
+I, [2018-11-12T15:18:13.127757 #1312]  INFO -- : worker=3 ready
+I, [2018-11-12T15:18:13.169800 #1315]  INFO -- : worker=4 ready
+I, [2018-11-12T15:18:13.179129 #1318]  INFO -- : worker=5 ready
+I, [2018-11-12T15:18:13.183568 #1324]  INFO -- : worker=6 ready
+I, [2018-11-12T15:18:13.192540 #1327]  INFO -- : worker=7 ready
+I, [2018-11-12T15:18:13.212941 #1330]  INFO -- : worker=8 ready
+W, [2018-11-12T15:35:52.396591 #1303]  WARN -- : #<Unicorn::HttpServer:0x00007f8fea796978>: worker (pid: 1303) exceeds memory limit (436029440.0 bytes > 433692798 bytes)
+W, [2018-11-12T15:35:52.397793 #1303]  WARN -- : Unicorn::WorkerKiller send SIGQUIT (pid: 1303) alive: 1024 sec (trial 1)
+I, [2018-11-12T15:35:53.295903 #1048]  INFO -- : reaped #<Process::Status: pid 1303 exit 0> worker=0
+I, [2018-11-12T15:35:53.629548 #5119]  INFO -- : worker=0 ready
+W, [2018-11-12T15:56:54.505090 #1318]  WARN -- : #<Unicorn::HttpServer:0x00007f8fea796978>: worker (pid: 1318) exceeds memory limit (477198848.0 bytes > 461952779 bytes)
+W, [2018-11-12T15:56:54.506091 #1318]  WARN -- : Unicorn::WorkerKiller send SIGQUIT (pid: 1318) alive: 2255 sec (trial 1)
+I, [2018-11-12T15:56:55.111839 #1048]  INFO -- : reaped #<Process::Status: pid 1318 exit 0> worker=5
+I, [2018-11-12T15:56:55.327697 #8326]  INFO -- : worker=5 ready
+W, [2018-11-12T16:07:53.614364 #1312]  WARN -- : #<Unicorn::HttpServer:0x00007f8fea796978>: worker (pid: 1312) exceeds memory limit (472297984.0 bytes > 459838908 bytes)
+W, [2018-11-12T16:07:53.615155 #1312]  WARN -- : Unicorn::WorkerKiller send SIGQUIT (pid: 1312) alive: 2917 sec (trial 1)
+I, [2018-11-12T16:07:54.160942 #1048]  INFO -- : reaped #<Process::Status: pid 1312 exit 0> worker=3
+I, [2018-11-12T16:07:54.382924 #9765]  INFO -- : worker=3 ready
+W, [2018-11-12T16:17:24.404344 #8326]  WARN -- : #<Unicorn::HttpServer:0x00007f8fea796978>: worker (pid: 8326) exceeds memory limit (463046656.0 bytes > 462578040 bytes)
+W, [2018-11-12T16:17:24.405107 #8326]  WARN -- : Unicorn::WorkerKiller send SIGQUIT (pid: 8326) alive: 1140 sec (trial 1)
+I, [2018-11-12T16:17:25.403564 #1048]  INFO -- : reaped #<Process::Status: pid 8326 exit 0> worker=5
+I, [2018-11-12T16:17:25.768537 #11316]  INFO -- : worker=5 ready

@@ -1,0 +1,12 @@
+[0KRunning with gitlab-runner 11.4.2 (cf91d5e1)
+[0;m[0K  on 96f2ea11c260 50e60ef9
+[0;m[0KUsing Docker executor with image ubuntu:latest ...
+[0;m[0KPulling docker image ubuntu:latest ...
+[0;m[0KUsing docker image sha256:ea4c82dcd15a33e3e9c4c37050def20476856a08e59526fbe533cc4e98387e39 for ubuntu:latest ...
+[0;msection_start:1542036403:prepare_script[0KRunning on runner-50e60ef9-project-1-concurrent-0 via 96f2ea11c260...
+section_end:1542036405:prepare_script[0Ksection_start:1542036405:get_sources[0K[32;1mCloning repository...[0;m
+Cloning into '/builds/root/my-awesome-web-app'...
+fatal: unable to access 'http://gitlab-ci-token:xxxxxxxxxxxxxxxxxxxx@gitlab/root/my-awesome-web-app.git/': Failed to connect to gitlab port 80: Connection refused
+section_end:1542036407:get_sources[0Ksection_start:1542036407:upload_artifacts_on_failure[0K/bin/bash: line 63: cd: /builds/root/my-awesome-web-app: No such file or directory
+section_end:1542036409:upload_artifacts_on_failure[0K[31;1mERROR: Job failed: exit code 1
+[0;m

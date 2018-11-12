@@ -1,0 +1,27 @@
+2018-11-12_16:55:59.14751 received TERM from runit, sending INT instead to force quit connections
+2018-11-12_16:55:59.15674 LOG:  received fast shutdown request
+2018-11-12_16:55:59.16141 LOG:  aborting any active transactions
+2018-11-12_16:55:59.16583 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.16815 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.17171 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.17381 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.17743 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.18041 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.18378 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.18614 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.18964 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.19215 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.19364 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.19679 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.19963 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.20151 LOG:  autovacuum launcher shutting down
+2018-11-12_16:55:59.20253 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.20500 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.20731 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.20931 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.21088 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.21434 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.22651 FATAL:  terminating connection due to administrator command
+2018-11-12_16:55:59.22754 FATAL:  terminating connection due to administrator command
+2018-11-12_16:56:00.86053 LOG:  shutting down
+2018-11-12_16:56:02.22886 LOG:  database system is shut down

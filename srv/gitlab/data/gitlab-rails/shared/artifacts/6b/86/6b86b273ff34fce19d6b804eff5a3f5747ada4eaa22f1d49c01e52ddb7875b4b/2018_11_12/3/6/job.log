@@ -1,0 +1,95 @@
+[0KRunning with gitlab-runner 11.4.2 (cf91d5e1)
+[0;m[0K  on 3eefacdd4854 0ea6efd6
+[0;m[0KUsing Docker executor with image docker ...
+[0;m[0KPulling docker image docker ...
+[0;m[0KUsing docker image sha256:062267097b77e3ecf374b437e93fefe2bbb2897da989f930e4750752ddfc822a for docker ...
+[0;msection_start:1542038004:prepare_script[0KRunning on runner-0ea6efd6-project-1-concurrent-0 via 3eefacdd4854...
+section_end:1542038006:prepare_script[0Ksection_start:1542038006:get_sources[0K[32;1mFetching changes...[0;m
+HEAD is now at 3d2b2d6 Initial commit
+[32;1mChecking out 3d2b2d6d as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+section_end:1542038007:get_sources[0Ksection_start:1542038007:restore_cache[0Ksection_end:1542038009:restore_cache[0Ksection_start:1542038009:download_artifacts[0Ksection_end:1542038010:download_artifacts[0Ksection_start:1542038010:build_script[0K[32;1m$ apk add --no-cache py2-pip && pip install docker-compose[0;m
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/community/x86_64/APKINDEX.tar.gz
+(1/12) Installing libbz2 (1.0.6-r6)
+(2/12) Installing expat (2.2.5-r0)
+(3/12) Installing libffi (3.2.1-r4)
+(4/12) Installing gdbm (1.13-r1)
+(5/12) Installing ncurses-terminfo-base (6.1_p20180818-r1)
+(6/12) Installing ncurses-terminfo (6.1_p20180818-r1)
+(7/12) Installing ncurses-libs (6.1_p20180818-r1)
+(8/12) Installing readline (7.0.003-r0)
+(9/12) Installing sqlite-libs (3.24.0-r0)
+(10/12) Installing python2 (2.7.15-r1)
+(11/12) Installing py-setuptools (39.1.0-r0)
+(12/12) Installing py2-pip (10.0.1-r0)
+Executing busybox-1.28.4-r1.trigger
+OK: 64 MiB in 26 packages
+Collecting docker-compose
+  Downloading https://files.pythonhosted.org/packages/2e/57/4f02ad084b637e00d7f430562b1cba24321e5d6eb59aecad2a6b760ebc18/docker_compose-1.23.1-py2.py3-none-any.whl (131kB)
+Collecting websocket-client<1.0,>=0.32.0 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/26/2d/f749a5c82f6192d77ed061a38e02001afcba55fe8477336d26a950ab17ce/websocket_client-0.54.0-py2.py3-none-any.whl (200kB)
+Collecting PyYAML<4,>=3.10 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769/PyYAML-3.13.tar.gz (270kB)
+Collecting dockerpty<0.5,>=0.4.1 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/8d/ee/e9ecce4c32204a6738e0a5d5883d3413794d7498fe8b06f44becc028d3ba/dockerpty-0.4.1.tar.gz
+Collecting backports.ssl-match-hostname>=3.5; python_version < "3.5" (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/76/21/2dc61178a2038a5cb35d14b61467c6ac632791ed05131dda72c20e7b9e23/backports.ssl_match_hostname-3.5.0.1.tar.gz
+Collecting docopt<0.7,>=0.6.1 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz
+Collecting ipaddress>=1.0.16; python_version < "3.3" (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/fc/d0/7fc3a811e011d4b388be48a0e381db8d990042df54aa4ef4599a31d39853/ipaddress-1.0.22-py2.py3-none-any.whl
+Collecting enum34<2,>=1.0.4; python_version < "3.4" (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/c5/db/e56e6b4bbac7c4a06de1c50de6fe1ef3810018ae11732a50f15f62c7d050/enum34-1.1.6-py2-none-any.whl
+Collecting requests!=2.11.0,!=2.12.2,!=2.18.0,<2.21,>=2.6.1 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/ff/17/5cbb026005115301a8fb2f9b0e3e8d32313142fe8b617070e7baad20554f/requests-2.20.1-py2.py3-none-any.whl (57kB)
+Collecting texttable<0.10,>=0.9.0 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/02/e1/2565e6b842de7945af0555167d33acfc8a615584ef7abd30d1eae00a4d80/texttable-0.9.1.tar.gz
+Collecting docker<4.0,>=3.5.0 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/c2/76/b8091dc6d9db038af62ae88f228da656a84632cf5d7a84dcf54c613d3fd0/docker-3.5.1-py2.py3-none-any.whl (126kB)
+Collecting jsonschema<3,>=2.5.1 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
+Collecting cached-property<2,>=1.2.0 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/3b/86/85c1be2e8db9e13ef9a350aecd6dea292bd612fa288c2f40d035bb750ded/cached_property-1.5.1-py2.py3-none-any.whl
+Collecting six<2,>=1.3.0 (from docker-compose)
+  Downloading https://files.pythonhosted.org/packages/67/4b/141a581104b1f6397bfa78ac9d43d8ad29a7ca43ea90a2d863fe3056e86a/six-1.11.0-py2.py3-none-any.whl
+Collecting chardet<3.1.0,>=3.0.2 (from requests!=2.11.0,!=2.12.2,!=2.18.0,<2.21,>=2.6.1->docker-compose)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+Collecting certifi>=2017.4.17 (from requests!=2.11.0,!=2.12.2,!=2.18.0,<2.21,>=2.6.1->docker-compose)
+  Downloading https://files.pythonhosted.org/packages/56/9d/1d02dd80bc4cd955f98980f28c5ee2200e1209292d5f9e9cc8d030d18655/certifi-2018.10.15-py2.py3-none-any.whl (146kB)
+Collecting urllib3<1.25,>=1.21.1 (from requests!=2.11.0,!=2.12.2,!=2.18.0,<2.21,>=2.6.1->docker-compose)
+  Downloading https://files.pythonhosted.org/packages/62/00/ee1d7de624db8ba7090d1226aebefab96a2c71cd5cfa7629d6ad3f61b79e/urllib3-1.24.1-py2.py3-none-any.whl (118kB)
+Collecting idna<2.8,>=2.5 (from requests!=2.11.0,!=2.12.2,!=2.18.0,<2.21,>=2.6.1->docker-compose)
+  Downloading https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl (58kB)
+Collecting docker-pycreds>=0.3.0 (from docker<4.0,>=3.5.0->docker-compose)
+  Downloading https://files.pythonhosted.org/packages/ea/bf/7e70aeebc40407fbdb96fa9f79fc8e4722ea889a99378303e3bcc73f4ab5/docker_pycreds-0.3.0-py2.py3-none-any.whl
+Collecting functools32; python_version == "2.7" (from jsonschema<3,>=2.5.1->docker-compose)
+  Downloading https://files.pythonhosted.org/packages/c5/60/6ac26ad05857c601308d8fb9e87fa36d0ebf889423f47c3502ef034365db/functools32-3.2.3-2.tar.gz
+Installing collected packages: six, websocket-client, PyYAML, dockerpty, backports.ssl-match-hostname, docopt, ipaddress, enum34, chardet, certifi, urllib3, idna, requests, texttable, docker-pycreds, docker, functools32, jsonschema, cached-property, docker-compose
+  Running setup.py install for PyYAML: started
+    Running setup.py install for PyYAML: finished with status 'done'
+  Running setup.py install for dockerpty: started
+    Running setup.py install for dockerpty: finished with status 'done'
+  Running setup.py install for backports.ssl-match-hostname: started
+    Running setup.py install for backports.ssl-match-hostname: finished with status 'done'
+  Running setup.py install for docopt: started
+    Running setup.py install for docopt: finished with status 'done'
+  Running setup.py install for texttable: started
+    Running setup.py install for texttable: finished with status 'done'
+  Running setup.py install for functools32: started
+    Running setup.py install for functools32: finished with status 'done'
+Successfully installed PyYAML-3.13 backports.ssl-match-hostname-3.5.0.1 cached-property-1.5.1 certifi-2018.10.15 chardet-3.0.4 docker-3.5.1 docker-compose-1.23.1 docker-pycreds-0.3.0 dockerpty-0.4.1 docopt-0.6.2 enum34-1.1.6 functools32-3.2.3.post2 idna-2.7 ipaddress-1.0.22 jsonschema-2.6.0 requests-2.20.1 six-1.11.0 texttable-0.9.1 urllib3-1.24.1 websocket-client-0.54.0
+You are using pip version 10.0.1, however version 18.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+[32;1m$ docker-compose up -d[0;m
+Some networks were defined but are not used by any service: app_net
+The Docker Engine you're using is running in swarm mode.
+
+Compose does not use swarm mode to deploy services to multiple nodes in a swarm. All containers will be scheduled on the current node.
+
+To deploy your application across the swarm, use `docker stack deploy`.
+
+Starting my-awesome-web-app_backend_1 ... 
+[1A[2KStarting my-awesome-web-app_backend_1 ... [32mdone[0m[1BStarting my-awesome-web-app_frontend_1 ... 
+[1A[2KStarting my-awesome-web-app_frontend_1 ... [32mdone[0m[1Bsection_end:1542038039:build_script[0Ksection_start:1542038039:after_script[0Ksection_end:1542038040:after_script[0Ksection_start:1542038040:archive_cache[0Ksection_end:1542038041:archive_cache[0Ksection_start:1542038041:upload_artifacts_on_success[0Ksection_end:1542038043:upload_artifacts_on_success[0K[32;1mJob succeeded
+[0;m

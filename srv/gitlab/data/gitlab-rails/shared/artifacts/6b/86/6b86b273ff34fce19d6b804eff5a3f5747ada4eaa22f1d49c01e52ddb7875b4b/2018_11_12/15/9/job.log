@@ -1,0 +1,72 @@
+[0KRunning with gitlab-runner 11.4.2 (cf91d5e1)
+[0;m[0K  on 96f2ea11c260 33932264
+[0;m[0KUsing Docker executor with image docker ...
+[0;m[0KPulling docker image docker ...
+[0;m[0KUsing docker image sha256:062267097b77e3ecf374b437e93fefe2bbb2897da989f930e4750752ddfc822a for docker ...
+[0;msection_start:1542039817:prepare_script[0KRunning on runner-33932264-project-1-concurrent-0 via 96f2ea11c260...
+section_end:1542039819:prepare_script[0Ksection_start:1542039819:get_sources[0K[32;1mFetching changes...[0;m
+HEAD is now at f142c0e added dgoss tests for backend
+From http://gitlab/root/my-awesome-web-app
+   f142c0e..0a2194b  master     -> origin/master
+[32;1mChecking out 0a2194b2 as master...[0;m
+[32;1mSkipping Git submodules setup[0;m
+section_end:1542039823:get_sources[0Ksection_start:1542039823:restore_cache[0Ksection_end:1542039825:restore_cache[0Ksection_start:1542039825:download_artifacts[0Ksection_end:1542039827:download_artifacts[0Ksection_start:1542039827:build_script[0K[32;1m$ cd frontend[0;m
+[32;1m$ apk add --no-cache curl[0;m
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/community/x86_64/APKINDEX.tar.gz
+(1/4) Installing nghttp2-libs (1.32.0-r0)
+(2/4) Installing libssh2 (1.8.0-r3)
+(3/4) Installing libcurl (7.61.1-r1)
+(4/4) Installing curl (7.61.1-r1)
+Executing busybox-1.28.4-r1.trigger
+OK: 6 MiB in 18 packages
+[32;1m$ curl -fsSL https://goss.rocks/install | sh[0;m
+Downloading https://github.com/aelsabbahy/goss/releases/download/v0.3.6/goss-linux-amd64
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   606    0   606    0     0   2187      0 --:--:-- --:--:-- --:--:--  2187
+  0 8324k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 10 8324k   10  865k    0     0   447k      0  0:00:18  0:00:01  0:00:17  887k 23 8324k   23 1954k    0     0   664k      0  0:00:12  0:00:02  0:00:10  987k 37 8324k   37 3092k    0     0   781k      0  0:00:10  0:00:03  0:00:07 1032k 51 8324k   51 4248k    0     0   859k      0  0:00:09  0:00:04  0:00:05 1067k 66 8324k   66 5574k    0     0   936k      0  0:00:08  0:00:05  0:00:03 1116k 86 8324k   86 7206k    0     0  1039k      0  0:00:08  0:00:06  0:00:02 1269k100 8324k  100 8324k    0     0  1102k      0  0:00:07  0:00:07 --:--:-- 1381k
+Goss v0.3.6 has been installed to /usr/local/bin/goss
+goss --version
+goss version v0.3.6
+Downloading https://raw.githubusercontent.com/aelsabbahy/goss/master/extras/dgoss/dgoss
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3801  100  3801    0     0  18541      0 --:--:-- --:--:-- --:--:-- 18541
+dgoss master has been installed to /usr/local/bin/dgoss
+[32;1m$ docker build . -t backend[0;m
+Sending build context to Docker daemon  9.728kB
+Step 1/9 : FROM ubuntu:latest
+ ---> ea4c82dcd15a
+Step 2/9 : RUN apt-get update -y
+ ---> Using cache
+ ---> 9a1fbdbf902d
+Step 3/9 : RUN apt-get install -y python-pip python-dev build-essential
+ ---> Using cache
+ ---> 9eb1cbea6bde
+Step 4/9 : COPY . /api
+ ---> Using cache
+ ---> c88f5da5e9cb
+Step 5/9 : WORKDIR /api
+ ---> Using cache
+ ---> 747d3dc60ed1
+Step 6/9 : RUN pip install -r requirements.txt
+ ---> Using cache
+ ---> 3f79c47e9ebb
+Step 7/9 : EXPOSE 8111
+ ---> Using cache
+ ---> c8ff94e3486a
+Step 8/9 : ENTRYPOINT ["python"]
+ ---> Using cache
+ ---> 21eeec5535eb
+Step 9/9 : CMD ["frontend.py"]
+ ---> Using cache
+ ---> 364306322300
+Successfully built 364306322300
+Successfully tagged backend:latest
+[32;1m$ ls -alish /usr/local/bin/dgoss[0;m
+ 666076      4 -rwxr-xr-x    1 root     root        3.7K Nov 12 16:23 /usr/local/bin/dgoss
+[32;1m$ /usr/local/bin/dgoss run -p 8110 backend[0;m
+/bin/sh: eval: line 75: /usr/local/bin/dgoss: not found
+section_end:1542039839:build_script[0Ksection_start:1542039839:after_script[0Ksection_end:1542039840:after_script[0Ksection_start:1542039840:upload_artifacts_on_failure[0Ksection_end:1542039841:upload_artifacts_on_failure[0K[31;1mERROR: Job failed: exit code 127
+[0;m

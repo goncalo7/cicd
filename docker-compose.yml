@@ -1,0 +1,39 @@
+version: "3.6"
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    ports:
+      - "22:22"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./srv/gitlab/data:/var/opt/gitlab
+      - ./srv/gitlab/logs:/var/log/gitlab
+      - ./srv/gitlab/config:/etc/gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab'
+
+  gitlab-runner1:
+    image: gcarvalho/gitlab-runner
+    depends_on:
+      - gitlab
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    links:
+      - gitlab
+    environment:
+      - CI_SERVER_URL=http://gitlab
+      - REGISTRATION_TOKEN=1JoQxzQjRZyqs3xAG75B
+
+  gitlab-runner2:
+    image: gcarvalho/gitlab-runner
+    depends_on:
+      - gitlab
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    links:
+      - gitlab
+    environment:
+      - CI_SERVER_URL=http://gitlab
+      - REGISTRATION_TOKEN=1JoQxzQjRZyqs3xAG75B
