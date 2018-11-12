@@ -47,7 +47,7 @@ The same process would be used for the backend and for the frontend.
 
 To show how this process will look, a sample pipeline with the first 4 steps was build in this repo.
 
-Simple Web Application CICD Instructions:
+###Simple Web Application CICD Instructions:
 
 Requirements:
 - Docker
