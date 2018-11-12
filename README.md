@@ -1,5 +1,6 @@
 ### CICD - Pipeline for a Simple Web App
 
+
 Developing and Releasing software can be a tricky process, where the pipeline and the tools choosen can improve massively the speed and the quallity of the delivered code. Also the iterations between build - test - deploy should be as straight forward as a simple commit to the project.
 
 From a lot of options on the marked, from Managed Providers vs Self-Hosting, Open-Source vs Commercial Solutions i decided to choose gitlab and gitlabci for the job.

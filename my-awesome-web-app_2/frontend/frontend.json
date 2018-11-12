@@ -1,0 +1,47 @@
+{
+  "id": "/frontend",
+  "cmd": null,
+  "cpus": 0.1,
+  "mem": 16,
+  "disk": 0,
+  "instances": 1,
+  "portDefinitions": [],
+  "acceptedResourceRoles": [
+    "*"
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "forcePullImage": false,
+      "image": "gcarvalho/frontend:VERSION",
+      "parameters": [
+        {
+          "key": "memory",
+          "value": "32m"
+        }
+      ],
+      "privileged": false
+    },
+    "volumes": [],
+    "portMappings": [
+      {
+        "containerPort": 8111,
+        "hostPort": 0,
+        "labels": {},
+        "protocol": "tcp",
+        "servicePort": 10002
+      }
+    ]
+  },
+  "maxLaunchDelaySeconds": 600,
+  "networks": [
+    {
+      "mode": "container/bridge"
+    }
+  ],
+  "env": {
+    "ENVIRONMENT": "INFRAENV",
+    "BACKEND_HOST": "HOST_BACKEND"
+  }
+
+}

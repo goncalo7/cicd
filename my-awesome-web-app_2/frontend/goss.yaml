@@ -1,0 +1,37 @@
+file:
+  /api/frontend.py:
+    exists: true
+    mode: "0644"
+    size: 763
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+package:
+  build-essential:
+    installed: true
+    versions:
+    - 12.4ubuntu1
+  python-dev:
+    installed: true
+    versions:
+    - 2.7.15~rc1-1
+  python-pip:
+    installed: true
+    versions:
+    - 9.0.1-2.3~ubuntu1
+port:
+  tcp:8111:
+    listening: true
+    ip:
+    - 0.0.0.0
+process:
+  python:
+    running: true
+http:
+  http://localhost:8111//:
+    status: 500
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: []

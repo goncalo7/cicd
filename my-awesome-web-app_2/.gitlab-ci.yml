@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  CONTAINER_FRONTEND_IMAGE: gcarvalho/frontend
+  CONTAINER_BACKEND_IMAGE: gcarvalho/backend
+
+build_frontend:
+  stage: build
+  tags: [docker]
+  script:
+    - cd frontend
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build --pull -t $CONTAINER_FRONTEND_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_FRONTEND_IMAGE:latest .
+    - docker push $CONTAINER_FRONTEND_IMAGE
+
+build_backend:
+  stage: build
+  tags: [docker]
+  script:
+    - cd backend
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build --pull -t $CONTAINER_BACKEND_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_BACKEND_IMAGE:latest .
+    - docker push $CONTAINER_BACKEND_IMAGE
+
+deploy_on_test_environemnt:
+  stage: deploy
+  image: docker
+  tags: [docker]
+  script:
+    - apk add --no-cache py2-pip && pip install docker-compose
+    - docker-compose up -d
