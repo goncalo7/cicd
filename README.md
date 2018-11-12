@@ -70,18 +70,6 @@ If you need to register new Runners just change and run the following command ac
 # How to access and use your services:
 Gitlab - http://localhost
 
-~~(if you gitlab takes too long to startup, probably the database got a issue starting up (database on a git repo is not ideal) 
-Run this inside your gitlab container:
-cd /var/opt/gitlab/postgresql/data; 
-mkdir pg_replslot
-mkdir pg_twophase
-mkdir pg_commit_ts
-mkdir pg_stat_tmp
-mkdir -p pg_logical/snapshots
-mkdir pg_snapshots
-mkdir pg_logical/mappings
-`
-
 gitlab user: root
 gitlab password: supermario
 
