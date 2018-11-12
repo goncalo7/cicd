@@ -63,7 +63,7 @@ If you need to register new Runners just change and run the following command ac
 
 `docker exec -it cicd_gitlab-runner2_1 gitlab-runner register -n -r  wKyhCsrTQ_56uc7Jnw1T -u http://gitlab --executor docker --docker-image docker:latest --docker-network-mode host --docker-privileged --tag-list docker --docker-volumes /var/run/docker.sock:/var/run/docker.sock`
 
-# How to access your services:
+# How to access and use your services:
 Gitlab - http://localhost
 
 gitlab user: root
