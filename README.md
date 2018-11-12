@@ -90,6 +90,14 @@ push your changes to the repo
 
 **(Open Gitlab Pipelines and see it happening)**
  
+Once the Pipeline is complete and the applications are deployed you can test your services on http://localhost:10000
+
+to test the backend api:
+
+http://localhost:10001/getjoke
+http://localhost:10001/getperson
+http://localhost:10001/getdog
+
 The Web Application is a simple backend api created with flask that only fetches and returns random data from some websites 
 The front end is a web page that prints the data of the endpoints in the same page.
 Ideally we would have a service discovery tool to automatically advertise the services, but because this isn't the case on this demo both frontend and backend are in the same pipeline. 
