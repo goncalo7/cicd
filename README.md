@@ -4,6 +4,7 @@
 Developing and Releasing software can be a tricky process, where the pipeline and the tools choosen can improve massively the speed and the quallity of the delivered code. Also the iterations between build - test - deploy should be as straight forward as a simple commit to the project.
 
 From a lot of options on the marked, from Managed Providers vs Self-Hosting, Open-Source vs Commercial Solutions i decided to choose gitlab and gitlabci for the job.
+
 Choosing one integrated solution for use of version control, infrastructure as code, handling of secrets, creating of build test and deployment pipelines, has many advantages:
 
 - Single Code Base
@@ -16,9 +17,11 @@ Choosing one integrated solution for use of version control, infrastructure as c
 The versalibilty of this tool allows to have multiple types of pipelines all with their own specific runners with any type of software necessary for the job.
 
 All the code is version controlled so you can trace all the changes made to any point in time. 
+
 Rollback procedures can also be completelly automated in any case.
 
 - Did i mention already Single System Operation? Thats right all the operation efforts will be done on a single system what can reduce all the operational process required.
+
 This Solution can be Used online from Gitlab or you can just run their opensource project gitlabCE for free and Develop Away. And if you change your mind later, the migration is simple and fast.
 
 Being a very complete tool that can integrate all the lifecycle of an application development, the features of GitlabCI will make you save time and money, to be applied where really matters the most: **Deliver Amazing Software**.
@@ -99,6 +102,8 @@ http://localhost:10001/getperson
 http://localhost:10001/getdog
 
 The Web Application is a simple backend api created with flask that only fetches and returns random data from some websites 
+
 The front end is a web page that prints the data of the endpoints in the same page.
+
 Ideally we would have a service discovery tool to automatically advertise the services, but because this isn't the case on this demo both frontend and backend are in the same pipeline. 
 
