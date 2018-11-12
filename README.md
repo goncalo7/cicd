@@ -74,6 +74,8 @@ gitlab password: supermario
 
 First don't forget to add your public key to gitlab
 
+IMPORTANT: After clone the repo go to my-awesome-app directory and run `tar -zxvf git.gz`
+
 **(Step 1 and 2)** 
 Make your changes on the code and unittest them with:
 (add more tests in goss.yml if desired)
