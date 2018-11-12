@@ -73,13 +73,15 @@ gitlab password: supermario
 
 First don't forget to add your public key to gitlab
 
-**(Step 1)** 
+**(Step 1 and 2)** 
 Make your changes on the code and unittest them with:
-(add more tests in goss.yml if desired
-backend: `docker build . -t backend; dgoss run -p 8110 backend`
-frontend: `docker build . -t frontend; dgoss run -p 8110 frontend`
+(add more tests in goss.yml if desired)
 
-**(step 2)**
+**backend:** `docker build . -t backend; dgoss run -p 8110 backend`
+
+**frontend:** `docker build . -t frontend; dgoss run -p 8110 frontend`
+
+**(step 3)**
 
 push your changes to the repo
 
