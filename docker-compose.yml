@@ -24,7 +24,7 @@ services:
       - gitlab
     environment:
       - CI_SERVER_URL=http://gitlab
-      - REGISTRATION_TOKEN=1JoQxzQjRZyqs3xAG75B
+      - REGISTRATION_TOKEN=wKyhCsrTQ_56uc7Jnw1T
 
   gitlab-runner2:
     image: gcarvalho/gitlab-runner
@@ -36,4 +36,4 @@ services:
       - gitlab
     environment:
       - CI_SERVER_URL=http://gitlab
-      - REGISTRATION_TOKEN=1JoQxzQjRZyqs3xAG75B
+      - REGISTRATION_TOKEN=wKyhCsrTQ_56uc7Jnw1T
